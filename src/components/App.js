@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
 
+import Dogs from './Dogs'
+
 class App extends Component {
     render() {
         return (
-            <h1>Can you see APP?</h1>
+            <div>
+                <h1>Can you see APP?</h1>
+                <Dogs/>
+
+            </div>
         )
     }
 }
