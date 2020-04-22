@@ -4,7 +4,6 @@ import { Card, Icon, Image } from 'semantic-ui-react';
 // import data from '../data/data'
 
 const Cards = () => (
-   
     <Card>
         <Image src='/images/mal.jpg' wrapped ui={false} />
         <Card.Content>

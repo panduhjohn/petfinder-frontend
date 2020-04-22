@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Cards from './Cards';
+import { Card, Icon, Image } from 'semantic-ui-react';
 // import faker from 'faker';
 
 import config from '../config';
 
-import { Card, Icon, Image } from 'semantic-ui-react';
 
 // import data from '../data/data';
 
 import { Client } from '@petfinder/petfinder-js';
+import { Organization } from '@petfinder/petfinder-js/dist/api/organization';
 
-class Dog extends Component {
+class Organization extends Component {
     constructor() {
         super();
 
@@ -34,23 +34,14 @@ class Dog extends Component {
             secret: 'u65ChCwbBni2hgkxeZPLTaVkpDgbdpzgd3ODU0X7',
         });
 
-        client.animal
-            .search({
-                type: 'Dog',
-            })
+        client.organization
+            .search({ location: 'Minneapolis, MN' })
             .then((response) => {
-                this.setState(
-                    {
-                        animals: response.data.animals,
-                    },
-                    () => {
-                        console.log(this.state.animals);
-                    }
-                );
+                console.log(response.data);
             })
             .catch((error) => {
                 console.log(error);
-            });
+            });  
     }
 
     apiTest = () => {
@@ -74,21 +65,19 @@ class Dog extends Component {
             >
                 {this.state.animals
                     ? this.state.animals.map((animal, idx) => {
-                          console.log(animal);
                           return (
                               <div key={animal.id}>
-                                  {/* {animal.photos.length !== 0 ? (
-                                      <p>{typeof animal.photos[0].medium}</p>
-                                  ) : (
-                                      <p>nope</p>
-                                  )} */}
-
                                   <Card>
                                       <Image
                                           src={
-                                              animal.photos.length !== 0
-                                                  ? animal.photos[0].large
-                                                  : '/images/mal.jpg'
+                                              animal.photos.medium !== null ? (
+                                                  <p>{animal.photos.medium}</p>
+                                              ) : (
+                                                  <img
+                                                      src='/images/mal.jpg'
+                                                      alt='...'
+                                                  />
+                                              )
                                           }
                                           //   src={faker.image.avatar()}
                                           wrapped
@@ -127,11 +116,10 @@ class Dog extends Component {
                     : 'something'}
                 <h1 style={{ display: 'flex', alignSelf: 'center' }}>
                     Dogs Component
-                    <Cards />
                 </h1>
             </div>
         );
     }
 }
 
-export default Dog;
+export default Organization;
