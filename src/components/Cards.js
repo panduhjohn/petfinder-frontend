@@ -5,7 +5,7 @@ import { Card, Icon, Image } from 'semantic-ui-react';
 
 const Cards = () => (
     <Card>
-        <Image src='/images/mal.jpg' wrapped ui={false} />
+        <Image src='/images/mal.jpg' wrapped ui={false}  />
         <Card.Content>
             <Card.Header>Matthew</Card.Header>
             <Card.Meta>

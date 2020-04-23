@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Cards from './Cards';
-// import faker from 'faker';
 
 import config from '../config';
 
 import { Card, Icon, Image } from 'semantic-ui-react';
-import {Link} from 'react-router-dom'
+
 // import data from '../data/data';
 
 import { Client } from '@petfinder/petfinder-js';
 
-class Dog extends Component {
+class AnimalDetail extends Component {
     constructor() {
         super();
 
@@ -62,18 +61,12 @@ class Dog extends Component {
 
     render() {
         return (
-            <div
-                style={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    paddingLeft: '10px',
-                    paddingRight: '10px',
-                    paddingBottom: '10px',
-                    paddingTop: '15px',
-                    justifyContent: 'space-around',
-                }}
-            >
-                {this.state.animals
+            <div>
+
+            
+            <h1>Animal Details</h1>
+            
+          {this.state.animals
                     ? this.state.animals.map((animal, idx) => {
                           return (
                               <div key={animal.id}>
@@ -90,7 +83,7 @@ class Dog extends Component {
                                       />
                                       <Card.Content>
                                           <Card.Header>
-                                              <Link to={`dogs/${animal.id}`}>{animal.name}</Link>
+                                              Name: {animal.name}
                                           </Card.Header>
                                           <Card.Meta>
                                               Species: {animal.type}
@@ -119,9 +112,9 @@ class Dog extends Component {
                           );
                       })
                     : 'Loading...'}
-            </div>
+                </div>
         );
     }
 }
 
-export default Dog;
+export default AnimalDetail;

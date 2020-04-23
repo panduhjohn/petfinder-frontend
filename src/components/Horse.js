@@ -7,6 +7,7 @@ import config from '../config';
 
 import { Card, Icon, Image } from 'semantic-ui-react';
 import {Link} from 'react-router-dom'
+
 // import data from '../data/data';
 
 import { Client } from '@petfinder/petfinder-js';
@@ -36,7 +37,7 @@ class Dog extends Component {
 
         client.animal
             .search({
-                type: 'Dog',
+                type: 'Horse',
             })
             .then((response) => {
                 this.setState({ animals: response.data.animals }, () => {
@@ -82,7 +83,7 @@ class Dog extends Component {
                                           src={
                                               animal.photos.length !== 0
                                                   ? animal.photos[0].large
-                                                  : '/images/brian.jpg'
+                                                  : '/images/horse.jpg'
                                           }
                                           //   src={faker.image.avatar()}
                                           wrapped
@@ -90,7 +91,9 @@ class Dog extends Component {
                                       />
                                       <Card.Content>
                                           <Card.Header>
-                                              <Link to={`dogs/${animal.id}`}>{animal.name}</Link>
+                                              <Link to={`horse/${animal.id}`}>
+                                                  {animal.name}
+                                              </Link>
                                           </Card.Header>
                                           <Card.Meta>
                                               Species: {animal.type}
