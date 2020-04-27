@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Cards from './Cards';
+import { Link } from 'react-router-dom';
 
-import config from '../config';
+import { Card, Icon, Image , Item} from 'semantic-ui-react';
 
-import { Card, Icon, Image } from 'semantic-ui-react';
+
 
 // import data from '../data/data';
 
@@ -15,6 +15,7 @@ class AnimalDetail extends Component {
         super();
 
         this.state = {
+            animal: '',
             dog: {
                 name: '',
                 breed: '',
@@ -34,13 +35,10 @@ class AnimalDetail extends Component {
         });
 
         client.animal
-            .search({
-                type: 'Dog',
-            })
+            .show(this.props.match.params.id)
             .then((response) => {
-                this.setState({ animals: response.data.animals }, () => {
-                    console.log(this.state.animals);
-                });
+                this.setState({ animal: response.data.animal });
+                console.log('AnimalDetail', response.data.animal);
             })
             .catch((error) => {
                 console.log(error);
@@ -55,64 +53,63 @@ class AnimalDetail extends Component {
             },
         };
 
-        const url = 'https://api.petfinder.com/v2/animals';
+        const url = `https://api.petfinder.com/v2/animals/${this.props.match.params.id}`;
         axios.get(url, axiosConfig);
     };
 
     render() {
+        console.log(this.props.match.params.id);
         return (
             <div>
+                <h1>This is the details page</h1>
 
-            
-            <h1>Animal Details</h1>
-            
-          {this.state.animals
-                    ? this.state.animals.map((animal, idx) => {
-                          return (
-                              <div key={animal.id}>
-                                  <Card>
-                                      <Image
-                                          src={
-                                              animal.photos.length !== 0
-                                                  ? animal.photos[0].large
-                                                  : '/images/brian.jpg'
-                                          }
-                                          //   src={faker.image.avatar()}
-                                          wrapped
-                                          ui={false}
-                                      />
-                                      <Card.Content>
-                                          <Card.Header>
-                                              Name: {animal.name}
-                                          </Card.Header>
-                                          <Card.Meta>
-                                              Species: {animal.type}
-                                          </Card.Meta>
-                                          <Card.Meta>
-                                              Breed: {animal.breeds.primary}
-                                          </Card.Meta>
-                                          <Card.Meta>
-                                              Size: {animal.size}
-                                          </Card.Meta>
-                                          <Card.Meta>
-                                              Coat: {animal.coat}
-                                          </Card.Meta>
-                                          <Card.Description>
-                                              {animal.description}
-                                          </Card.Description>
-                                      </Card.Content>
-                                      <Card.Content extra>
-                                          <p>
-                                              <Icon name='user' />
-                                              {animal.status}
-                                          </p>
-                                      </Card.Content>
-                                  </Card>
-                              </div>
-                          );
-                      })
-                    : 'Loading...'}
-                </div>
+                <Item.Group>
+                    <Item>
+                        {/* <Item.Image
+                            size='tiny'
+                            src={this.state.animals.photos[0].medium}
+                            // src={
+                            //     animal.photos.length !== 0
+                            //         ? animal.photos[0].large
+                            //         : '/images/brian.jpg'
+                            // }
+                        /> */}
+
+                        <Item.Content>
+                            <Item.Header as='a'>
+                                Name: {this.state.animal.name}
+                            </Item.Header>
+                            <Item.Meta>
+                                Description: {this.state.animal.description}
+                            </Item.Meta>
+                            <Item.Meta>
+                                Species: {this.state.animal.species}
+                            </Item.Meta>
+                            <Item.Meta>
+                                {/* Contact: {this.state.animal.contact.email}    */}
+                            </Item.Meta>
+                            <Item.Meta>
+                                {/* Phone: {this.state.animal.contact.phone} */}
+                            </Item.Meta>
+                            <Item.Description>
+                                <Image src='/images/mal.jpg' />
+                            </Item.Description>
+                            <Item.Extra>Additional Details</Item.Extra>
+                            <Item.Extra>Age: {this.state.animal.age}</Item.Extra>
+                            <Item.Extra>Gender: {this.state.animal.gender}</Item.Extra>
+                            <Item.Extra>Size: {this.state.animal.size}</Item.Extra>
+                            <Item.Extra>Status: {this.state.animal.status}</Item.Extra>
+                        </Item.Content>
+                    </Item>
+
+                    <Item>
+                        <Item.Image
+                            size='tiny'
+                            src='/images/cat.jpg'
+                        />
+                    </Item>
+                </Item.Group>
+            </div>
         );
     }
 }

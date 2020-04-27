@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Cards from './Cards';
+
 // import faker from 'faker';
 
-import config from '../config';
-
 import { Card, Icon, Image } from 'semantic-ui-react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 // import data from '../data/data';
 
@@ -107,9 +105,7 @@ class Dog extends Component {
                                           <Card.Meta>
                                               Coat: {animal.coat}
                                           </Card.Meta>
-                                          <Card.Description>
-                                              {animal.description}
-                                          </Card.Description>
+                                         
                                       </Card.Content>
                                       <Card.Content extra>
                                           <p>

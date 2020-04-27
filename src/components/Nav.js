@@ -7,24 +7,25 @@ function Nav() {
     const navStyle = {
         color: 'blue'
     }
+
     return (
         <nav>
-            <h3>Awesome Logo</h3>
+            <img style={{height: '100px', width: '150px'}} src="/images/logo.png" alt="logo"/>
             <ul className='navLinks'>
                 <Link style={navStyle} to={'/'}>
                     <li>Home</li>
                 </Link>
                 <Link to={'/dogs'}>
-                    <li>Dogs</li>
+                    <li>Dog</li>
                 </Link>
                 <Link to={'/horse'}>
                     <li>Horse</li>
                 </Link>
-                <Link to={'/shop'}>
-                    <li>Shop</li>
+                <Link to={'/cats'}>
+                    <li>Cat</li>
                 </Link>
-                <Link to={'/contact'}>
-                    <li>Contact</li>
+                <Link to={'/organzation'}>
+                    <li>Organization</li>
                 </Link>
             </ul>
         </nav>

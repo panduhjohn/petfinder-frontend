@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Card, Icon, Image } from 'semantic-ui-react';
-// import faker from 'faker';
-
-import config from '../config';
-
-
-// import data from '../data/data';
 
 import { Client } from '@petfinder/petfinder-js';
 import { Organization } from '@petfinder/petfinder-js/dist/api/organization';
 
-class Organization extends Component {
+class Organizations extends Component {
     constructor() {
         super();
 
@@ -45,7 +39,7 @@ class Organization extends Component {
     }
 
     apiTest = () => {
-        const url = 'https://api.petfinder.com/v2/animals';
+        const url = 'https://api.petfinder.com/v2/organization';
         axios.get(url);
     };
 
@@ -113,7 +107,7 @@ class Organization extends Component {
                               </div>
                           );
                       })
-                    : 'something'}
+                    : 'Loading...'}
                 <h1 style={{ display: 'flex', alignSelf: 'center' }}>
                     Dogs Component
                 </h1>
@@ -122,4 +116,4 @@ class Organization extends Component {
     }
 }
 
-export default Organization;
+export default Organizations;

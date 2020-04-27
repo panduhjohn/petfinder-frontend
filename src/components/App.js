@@ -1,68 +1,38 @@
-import React, { Component } from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import React from 'react';
+
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+import './App.css';
+
+import Nav from './Nav';
+import Home from './Home';
+import Horse from './Horse';
+import Shop from './Shop';
+import Organization from './Organization';
 
 import Dogs from './Dogs'
-import Cards from './Cards'
+import Cats from './Cats'
+import AnimalDetail from './AnimalDetail'
 
-// class App extends Component {
-//     render() {
-//         return (
-//             <div>
-                
-//                 <Dogs />
-//                 <Cards/>
-
-//             </div>
-//         )
-//     }
-// }
-
-// export default App
-
-export default function App() {
+function AppTest() {
     return (
         <Router>
-            <div>
-                <nav>
-                    <ul style={{ display: 'flex', paddingTop: '10px', justifyContent: 'space-around',textDecoration: 'none', listStyle: 'none' }}>
-                        <li>
-                            <Link to='/dogs'>Dog Finder</Link>
-                        </li>
-                        <li>
-                            <Link to='/'>Home</Link>
-                        </li>
-                        <li>
-                            <Link to='/users'>Users</Link>
-                        </li>
-                    </ul>
-                </nav>
-
-                {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
+            <div className='App'>
+                <Nav />
                 <Switch>
-                    <Route path='/dogs'>
-                        <Dogs />
-                    </Route>
-                    <Route path='/users'>
-                        <Cards />
-                    </Route>
-                    <Route path='/'>
-                        <About />
-                    </Route>
+                    <Route path='/' exact component={Home} />
+                    <Route path='/horse' exact component={Horse} />
+                    <Route path='/horse/:id' component={AnimalDetail} />
+                    <Route path='/cats' exact component={Cats} />
+                    <Route path='/cats/:id' component={AnimalDetail} />
+                    <Route path='/dogs' exact component={Dogs} />
+                    <Route path='/dogs/:id' component={AnimalDetail} />
+                    <Route path='/shop' exact component={Shop} />
+                    <Route path='/organization' exact component={Organization} />
                 </Switch>
             </div>
         </Router>
     );
 }
 
-function Home() {
-    return <h2>Dogs</h2>;
-}
-
-function About() {
-    return <h2>About</h2>;
-}
-
-function Users() {
-    return <h2>Users</h2>;
-}
+export default AppTest;
