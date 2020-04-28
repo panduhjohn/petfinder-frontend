@@ -30,23 +30,24 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### Installation 
+### `Installation`
 
 Clone the repo from here 
 
 (https://github.com/panduhjohn/petfinder-backend.git)
 (https://github.com/panduhjohn/petfinder-frontend.git)
 
-### Setup
+### `Setup`
+
 After you clone the repository, you can setup the app by:
 
-npm install 
-cd final-project-frontend
-npm start
+`cd final-project-frontend`
+`npm install`
+`npm start`
 
-npm install 
-cd final-project-backend
-npm start
+`cd final-project-backend`
+`npm install`
+`npm start`
 
 
 
