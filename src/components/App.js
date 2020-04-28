@@ -8,8 +8,7 @@ import Nav from './Nav';
 import Home from './Home';
 import Horse from './Horse';
 import Shop from './Shop';
-import Organization from './Organization';
-
+import Organization from './Organizations';
 import Dogs from './Dogs'
 import Cats from './Cats'
 import AnimalDetail from './AnimalDetail'
@@ -19,6 +18,7 @@ function AppTest() {
         <Router>
             <div className='App'>
                 <Nav />
+                
                 <Switch>
                     <Route path='/' exact component={Home} />
                     <Route path='/horse' exact component={Horse} />

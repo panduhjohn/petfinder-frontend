@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-// import faker from 'faker';
-
-
-
 import { Card, Icon, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-// import data from '../data/data';
+
 
 import { Client } from '@petfinder/petfinder-js';
 
@@ -84,7 +80,6 @@ class Dog extends Component {
                                                   ? animal.photos[0].large
                                                   : '/images/cat.jpg'
                                           }
-                                          //   src={faker.image.avatar()}
                                           wrapped
                                           ui={false}
                                       />
@@ -104,9 +99,11 @@ class Dog extends Component {
                                               Size: {animal.size}
                                           </Card.Meta>
                                           <Card.Meta>
-                                              Coat: {animal.coat}
+                                              Coat:{' '}
+                                              {animal.coat !== null
+                                                  ? animal.coat
+                                                  : 'No Coat'}
                                           </Card.Meta>
-                                         
                                       </Card.Content>
                                       <Card.Content extra>
                                           <p>

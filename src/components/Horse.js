@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-// import faker from 'faker';
-
 import { Card, Icon, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-// import data from '../data/data';
 
 import { Client } from '@petfinder/petfinder-js';
 
@@ -47,7 +44,7 @@ class Dog extends Component {
             });
     }
 
-    apiTest = () => {
+    apiCall = () => {
         let axiosConfig = {
             headers: {
                 'Content-Type': 'application/json; charset=UTF-8',
@@ -103,9 +100,11 @@ class Dog extends Component {
                                               Size: {animal.size}
                                           </Card.Meta>
                                           <Card.Meta>
-                                              Coat: {animal.coat}
+                                              Coat:{' '}
+                                              {animal.coat !== null
+                                                  ? animal.coat
+                                                  : 'No Coat'}
                                           </Card.Meta>
-                                         
                                       </Card.Content>
                                       <Card.Content extra>
                                           <p>

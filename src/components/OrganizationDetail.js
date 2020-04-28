@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import { Image, Item } from 'semantic-ui-react';
+import { Card, Icon, Image, Item } from 'semantic-ui-react';
+
+// import data from '../data/data';
 
 import { Client } from '@petfinder/petfinder-js';
 
-class AnimalDetail extends Component {
+class OrganizationDetail extends Component {
     constructor() {
         super();
 
@@ -40,7 +42,7 @@ class AnimalDetail extends Component {
             });
     }
 
-    apiTest = () => {
+    apiCall = () => {
         let axiosConfig = {
             headers: {
                 'Content-Type': 'application/json; charset=UTF-8',
@@ -56,17 +58,35 @@ class AnimalDetail extends Component {
         console.log(this.props.match.params.id);
         return (
             <div>
+                <h1>This is the details page</h1>
+
                 <Item.Group>
                     <Item>
+                        {/* <Item.Image
+                            size='tiny'
+                            src={this.state.animals.photos[0].medium}
+                            // src={
+                            //     animal.photos.length !== 0
+                            //         ? animal.photos[0].large
+                            //         : '/images/brian.jpg'
+                            // }
+                        /> */}
+
                         <Item.Content>
                             <Item.Header as='a'>
                                 Name: {this.state.animal.name}
                             </Item.Header>
                             <Item.Meta>
-                                Description: {this.state.animal.description !== null ? this.state.animal.description : 'No Description'}
+                                Description: {this.state.animal.description}
                             </Item.Meta>
                             <Item.Meta>
                                 Species: {this.state.animal.species}
+                            </Item.Meta>
+                            <Item.Meta>
+                                {/* Contact: {this.state.animal.contact.email}    */}
+                            </Item.Meta>
+                            <Item.Meta>
+                                {/* Phone: {this.state.animal.contact.phone} */}
                             </Item.Meta>
                             <Item.Description
                                 style={{
@@ -76,15 +96,6 @@ class AnimalDetail extends Component {
                                 }}
                             >
                                 <Image src='/images/mal.jpg' />
-                                {/* <Image
-                                    src={
-                                        this.state.animal.photos !== 0
-                                            ? this.state.animal.photos
-                                            : '/images/brian.jpg'
-                                    }
-                                    wrapped
-                                    ui={false}
-                                /> */}
                             </Item.Description>
                             <Item.Extra>Additional Details</Item.Extra>
                             <Item.Extra>
@@ -107,4 +118,4 @@ class AnimalDetail extends Component {
     }
 }
 
-export default AnimalDetail;
+export default OrganizationDetail;
